@@ -1,0 +1,51 @@
+<div>ITS MOVIES LIST</div>
+<!-- <div>
+  <ng-template #errorLoaded>
+      <div class="error-container">
+          <jccm-aviso
+              system="NOTIFICA"
+              description="Error al cargar los datos de la comunicación"
+              [canBeClosed]="false">
+          </jccm-aviso>
+      </div>
+  </ng-template>
+
+  <div *ngIf="!loading; else whileLoading">
+      <div *ngIf="dataLoaded; else errorLoaded">
+        <jccm-button color="primary" class="back-button" (click)="back()"><mat-icon class="back-icon">arrow_back</mat-icon>Comunicaciones</jccm-button>
+          <div class="row nomargin">
+              <div class="col-10">
+                  <h1 class="notifica-title">{{notificaData.concepto}}
+                    <div *ngIf="notificaData.estado" class="pb-3 div-estado" data-cy=estado>
+                      <div class="rectangle estado pr-2">
+                        <mat-icon class="icon-estado" [class]='colorEstado'>fiber_manual_record</mat-icon><span class='icon-align' >{{notificaData.estado}}</span>
+                      </div>
+                    </div>
+                  </h1>
+              </div>
+          </div>
+
+          <div>
+              <mat-tab-group [(selectedIndex)]="selectedTabIndex"  mat-align-tabs="start">
+                  <mat-tab label="Información General" >
+                      <div *ngIf="selectedTabIndex==0" class="notifica-detail">
+                        <jccm-comunicacion-informacion-general [notificaData]="notificaData"></jccm-comunicacion-informacion-general>
+                      </div>
+                  </mat-tab>
+
+                  <mat-tab label="Histórico">
+                    <div *ngIf="selectedTabIndex==1" class="notifica-detail">
+                      <jccm-comunicacion-historico [idComunica]="idComunica"></jccm-comunicacion-historico>
+                    </div>
+                </mat-tab>
+              </mat-tab-group>
+          </div>
+      </div>
+  </div>
+
+  <ng-template #whileLoading>
+      <div class="jccm-spinner">
+          <img [src]="jccmSpinner" alt="JCCM spinner">
+      </div>
+  </ng-template>
+</div> -->
