@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 // import { Comunicacion } from '../../models/comunicacion';
 // import { NotificaApiRestService } from '../../services/notifica-api-rest.service';
@@ -11,28 +11,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MoviesListComponent implements OnInit {
 
-  public notificaData: any;
-  public jccmSpinner = '/assets/eCLM_spinner.gif';
+  // public jccmSpinner = '/assets/eCLM_spinner.gif';
   public loading = false;
-  public selectedTabIndex = 0;
-  public dataLoaded: boolean;
-  colorEstado = '';
-  idComunica = 922;
 
   constructor(
-    // private readonly notificaService: NotificaApiRestService,
-    private readonly location: Location,
-    private readonly router: Router,
-    private readonly rutaActiva: ActivatedRoute
+    @Inject(Location) private location: Location
+    // private readonly router: Router,
+    // private readonly rutaActiva: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.loading = true;
-    this.rutaActiva.queryParams.subscribe((queryParam) => {
-      if (queryParam.index) {
-        this.selectedTabIndex = queryParam.index;
-      }
-    });
+    // this.rutaActiva.queryParams.subscribe((queryParam) => {
+    //   if (queryParam.index) {
+    //     this.selectedTabIndex = queryParam.index;
+    //   }
+    // });
     // this.rutaActiva.params.subscribe((param) => {
     //   this.idComunica = param.id;
     //   this.notificaService.getComunicacion$(this.idComunica)

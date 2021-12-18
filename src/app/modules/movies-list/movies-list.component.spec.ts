@@ -5,13 +5,13 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 // import { AppConfigEnvironmentCoreServiceMock, NotificaApiRestServiceMock } from '../../test-mocks';
 import { DatePipe, Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+
 // import { NotificaApiRestService } from '../../services/notifica-api-rest.service';
 import { from, of } from 'rxjs';
-// import { EstadoEnum } from '../../models/comunicacion';
-// // import { MatTabsModule } from '@angular/material/tabs';
-// import { ComunicacionInformacionGeneralComponent } from './components/comunicacion-informacion-general/comunicacion-informacion-general.component';
-// import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('MoviesListComponent', () => {
   let component: MoviesListComponent;
@@ -22,14 +22,14 @@ describe('MoviesListComponent', () => {
       imports: [
         HttpClientModule,
         HttpClientTestingModule,
-        // UiModule,
-        // MatTabsModule,
-        // MatDialogModule,
+        MatCardModule,
+        MatIconModule,
         BrowserAnimationsModule
       ],
       declarations: [ MoviesListComponent ],
       providers: [
         DatePipe,
+        Location,
         {
           provide: Router,
           // useClass: class {
@@ -37,18 +37,18 @@ describe('MoviesListComponent', () => {
           //   navigateByUrl = jest.fn();
           // },
         },
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            queryParams: from([{index: 1 }]),
-            params: from([{ id: 1 }]),
-            data: from([
-              {
-                modo: null,
-              },
-            ]),
-          },
-        },
+        // {
+        //   provide: ActivatedRoute,
+        //   useValue: {
+        //     queryParams: from([{index: 1 }]),
+        //     params: from([{ id: 1 }]),
+        //     data: from([
+        //       {
+        //         modo: null,
+        //       },
+        //     ]),
+        //   },
+        // },
         // {provide: NotificaApiRestService, useClass: NotificaApiRestServiceMock},
         // { provide: EnvironmentCoreService, useClass: AppConfigEnvironmentCoreServiceMock }
       ]
@@ -66,16 +66,16 @@ describe('MoviesListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('test queryParam in route', (done) => {
-    const activatedRoute: ActivatedRoute = fixture.debugElement.injector.get(ActivatedRoute);
+  // it('test queryParam in route', (done) => {
+  //   const activatedRoute: ActivatedRoute = fixture.debugElement.injector.get(ActivatedRoute);
 
-    activatedRoute.queryParams = of([]);
-    component.ngOnInit();
-    activatedRoute.queryParams.subscribe((value) => {
-      expect(value).toEqual([]);
-      done();
-    });
-  });
+  //   activatedRoute.queryParams = of([]);
+  //   component.ngOnInit();
+  //   activatedRoute.queryParams.subscribe((value) => {
+  //     expect(value).toEqual([]);
+  //     done();
+  //   });
+  // });
 
   // it('should back button', () => {
   //   const location = TestBed.inject(Location);

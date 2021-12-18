@@ -1,89 +1,24 @@
-// @import '../../scss/variables.scss';
-
-::ng-deep .mat-tab-body-content {
-  height: auto !important;
-  overflow: unset !important;
-  font-family: 'Roboto-Slab-Regular' !important;
+.example-card {
+  max-width: 400px;
 }
 
-::ng-deep .mat-tab-label-content {
-  font-family: 'Roboto-Slab-Regular' !important;
-  font-size: 22px;
-  color:  var(--primary-900) !important;
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
 }
 
-::ng-deep .mat-tab-body.mat-tab-body-active{
-  overflow-y: hidden !important;
+.mat-footer {
+  margin-top: -32px;
 }
 
-::ng-deep .mat-tab-label {
-  opacity: 1 !important;
-  height: 27px !important;
-  &:not(:last-child) {
-      border-right: solid 2px var(--primary-900) !important;
+.btn-add {
+  border: none;
+  background-color: cadetblue;
+  border-radius: 50%;
+}
+
+:host::ng-deep {
+  .mat-card-image {
+    padding: 16px;
   }
 }
-::ng-deep .mat-tab-label-active {
-  font-family: 'Roboto-Slab-Regular' !important;
-  font-size: 22px;
-  color:  var(--primary-900);
-  font-weight: bold !important;
-}
-::ng-deep .mat-ink-bar {
-  visibility: hidden !important;
-}
-::ng-deep .mat-tab-header {
-  border-bottom: 0px !important;
-}
-
-.notifica-title {
-  font-size: 34px;
-}
-
-// Spinner
-.jccm-spinner {
-  text-align: center;
-}
-
-:host::ng-deep .back-button{
-  button {
-    height: 40px !important;
-    border-radius: 8px !important;
-  }
-}
-
-.rectangle {
-  border-radius: 1px;
-  background: rgba(212, 241, 251, 0.5)
-}
-
-.div-estado{
-  display: inline-block;
-  padding-left: 14px;
-  padding-bottom: 4px !important;
-}
-
-.estado{
-  color: #002855;
-  font-family: "Arial Narrow";
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 16px;
-}
-
-// Botones
-:host::ng-deep .back-button {
-  button {
-    height: 40px !important;
-    border-radius: 8px !important;
-    margin-left: 15px;
-    background-color: var(--primary-500) !important;
-  }
-}
-
-:host::ng-deep .container {
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-}
-

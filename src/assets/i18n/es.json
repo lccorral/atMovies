@@ -1,7 +1,13 @@
 {
   "HOME": {
+    "TITULO": "AtMovies",
     "PELICULAS": "Películas",
     "ACTORES": "Actores",
-    "ESTUDIOS": "Estudios"
+    "ESTUDIOS": "Estudios",
+    "CAMPO_REQUERIDO": "Campo requerido",
+    "TITULO_PELICULA": "Título"
+  },
+  "NUEVA_PELICULA": {
+    "TITULO": "Título"
   }
 }

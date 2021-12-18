@@ -1,0 +1,14 @@
+<mat-nav-list class="sidenav-list">
+  <a mat-list-item [routerLink]="['/movies/search']" (click)="onToggleClose()">
+    <mat-icon>input</mat-icon>
+    <span class="js-movies">{{ 'HOME.PELICULAS' | translate }}</span>
+  </a>
+  <a mat-list-item [routerLink]="['/movies/search']" (click)="onToggleClose()">
+    <mat-icon>account_circle</mat-icon>
+    <span>{{ 'HOME.ACTORES' | translate }}</span>
+  </a>
+  <a mat-list-item [routerLink]="['/movies/search']" (click)="onToggleClose()">
+    <mat-icon>hotel</mat-icon>
+    <span>{{ 'HOME.ESTUDIOS' | translate }}</span>
+  </a>
+</mat-nav-list>

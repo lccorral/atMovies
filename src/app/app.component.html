@@ -1,61 +1,15 @@
-<mat-toolbar color="primary" class="toolbar">
-	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
-	<h1 class="app-name">AtMovies</h1>
-</mat-toolbar>
-<mat-sidenav-container class="container" autosize>
-	<mat-sidenav #sidenav class="sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
-		<mat-nav-list>
-			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-        <a mat-list-item [routerLink]="['/movies/search']" [routerLinkActive]="['is-active']">
-          <span class="full-width" *ngIf="isExpanded || isShowing">{{ 'HOME.PELICULAS' | translate }}</span>
-        </a>
-				<mat-icon mat-list-icon>home</mat-icon>
-				<!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon> -->
-			</mat-list-item>
-			<!-- <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
-				<a mat-list-item href="...">Submenu Item 1</a>
-				<a mat-list-item href="...">Submenu Item 2</a>
-				<mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
-					<span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
-					<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
-				</mat-list-item>
-				<div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
-					<mat-list-item>SubSubmenu Item 1</mat-list-item>
-					<mat-list-item>SubSubmenu Item 2</mat-list-item>
-				</div>
-			</div> -->
-    </mat-nav-list>
+<mat-sidenav-container>
 
-    <mat-nav-list>
-			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-        <a mat-list-item [routerLink]="['/movies/search']" [routerLinkActive]="['is-active']">
-          <span class="full-width" *ngIf="isExpanded || isShowing">{{ 'HOME.ACTORES' | translate }}</span>
-        </a>
-				<mat-icon mat-list-icon>home</mat-icon>
-				<!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon> -->
-			</mat-list-item>
-    </mat-nav-list>
+  <mat-sidenav #sidenav>
+    <app-sidenav-list (closeSideNav)="sidenav.close()"></app-sidenav-list>
+  </mat-sidenav>
 
-    <mat-nav-list>
-			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-        <a mat-list-item [routerLink]="['/movies/search']" [routerLinkActive]="['is-active']">
-          <span class="full-width" *ngIf="isExpanded || isShowing">{{ 'HOME.ESTUDIOS' | translate }}</span>
-        </a>
-				<mat-icon mat-list-icon>home</mat-icon>
-				<!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon> -->
-			</mat-list-item>
-    </mat-nav-list>
+  <mat-sidenav-content>
+    <app-toolbar (SideNavToggle)="sidenav.toggle()"></app-toolbar>
 
-	</mat-sidenav>
+    <main>
+      <dashboard></dashboard>
+    </main>
 
-  <div class="sidenav-content">
-    <!-- <div class="jumbotron mt-3 text-center">
-      <h1 class="display-6">Bienvenido a la Plataforma de Administración Electrónica</h1>
-      <hr class="my-4">
-      <p>Puede utilizar esta aplicación utilizando el menú que se encuentra a su izquierda.</p>
-
-    </div> -->
-    <dashboard></dashboard>
-  </div>
-
+  </mat-sidenav-content>
 </mat-sidenav-container>

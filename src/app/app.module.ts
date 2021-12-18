@@ -11,7 +11,9 @@ import { DashboardComponent } from './components/home/dashboard.component';
 
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -21,7 +23,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    ToolbarComponent,
+    SidenavListComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -3,15 +3,19 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { MoviesListComponent } from './movies-list.component';
 import { MoviesListRoutingModule } from './movies-list-routing.module';
 
+import {MatCardModule} from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
-    MoviesListComponent,
-    // ComunicacionDetalleEvidenciaComponent
+    MoviesListComponent
   ],
   imports: [
     CommonModule,
-    MoviesListRoutingModule
+    MoviesListRoutingModule,
+    MatCardModule,
+    MatIconModule
   ], providers: [
     DatePipe
   ]
