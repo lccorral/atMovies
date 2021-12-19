@@ -1,0 +1,43 @@
+.example-chip-list {
+  width: 100%;
+}
+
+// input.mat-chip-input {
+//   width: 100%;
+//   font-size: 13px;
+//   letter-spacing: 0;
+//   line-height: 20px;
+//   margin-top: -7px !important;
+//   margin-left: 0;
+//   padding-top: 14px;
+// }
+
+.padding-chip {
+  padding-top: 11px;
+}
+
+
+.mat-chip-remove{
+  color: white !important;
+}
+
+.mat-standard-chip{
+  background: #3f51b5 !important;
+  color: white;
+  min-height: 30px !important;
+  height: 30px !important;
+}
+
+.error {
+  font-size: 13px;
+}
+
+.form-label-disabled {
+  color: grey;
+}
+
+:host::ng-deep {
+  .mat-chip-list-wrapper input.mat-input-element, .mat-chip-list-wrapper .mat-standard-chip {
+    margin: 1px !important;
+  }
+}

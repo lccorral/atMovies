@@ -1,0 +1,35 @@
+<mat-form-field class="example-chip-list required-field" [ngClass]="{'padding-chip': !valueInput}" floatLabel="always">
+  <mat-label class="font-weight-bold" [ngClass]="{'form-label-disabled': disabled && isWriteMode}">{{label}}</mat-label>
+
+  <mat-chip-list #chipList aria-label="selection" required>
+    <mat-chip required
+      *ngFor="let item of selectedElements"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(item)"
+      [disabled]="disabled">
+      {{showIdChip?item.key:item.value}}
+      <mat-icon matChipRemove *ngIf="removable && isWriteMode">cancel</mat-icon>
+    </mat-chip>
+    <mat-chip class="chip-void" *ngIf="!isWriteMode && (!selectedElements ||selectedElements?.length === 0)">-</mat-chip>
+    <input
+      [hidden]="disabled"
+      [placeholder]="placeholderInput"
+      #elementInput
+      [formControl]="itemCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (focusout)="markAsTouched()"
+      [readonly]="disabled">
+      <mat-error class="error" *ngIf="selectedElements?.length === 0 && touched">
+        <strong>{{ label }}</strong> {{ 'NUEVA_PELICULA.CAMPO_REQUERIDO' | translate }}
+      </mat-error>
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let item of filteredItems | async" [value]="item.key">
+        {{item.value}}
+      </mat-option>
+    </mat-autocomplete>
+
+</mat-form-field>

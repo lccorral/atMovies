@@ -3,11 +3,21 @@
     "TITULO": "AtMovies",
     "PELICULAS": "Películas",
     "ACTORES": "Actores",
-    "ESTUDIOS": "Estudios",
-    "CAMPO_REQUERIDO": "Campo requerido",
-    "TITULO_PELICULA": "Título"
+    "ESTUDIOS": "Estudios"
   },
   "NUEVA_PELICULA": {
-    "TITULO": "Título"
+    "TITULO": "Título",
+    "POSTER": "Póster (url)",
+    "GENEROS": "Géneros",
+    "ANADIR_GENERO": "Añade un género",
+    "ACTORES": "Actores",
+    "SELECCIONA_ACTOR": "Selecciona un actor",
+    "ESTUDIO": "Estudio",
+    "SELECCIONA_ESTUDIO": "Selecciona un estudio",
+    "ANIO": "Año",
+    "DURACION": "Duración",
+    "PUNTUACION": "Puntuación",
+    "CAMPO_REQUERIDO": "requerido",
+    "CAMPO_REQUERIDA": "requerida"
   }
 }
