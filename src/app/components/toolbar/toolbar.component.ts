@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -8,7 +8,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ToolbarComponent {
 
- @Output() SideNavToggle = new EventEmitter();
+@Input() title: string;
+@Input() isMain: boolean;
+@Output() SideNavToggle = new EventEmitter();
 
  constructor(@Inject(TranslateService) translate: TranslateService) {
   translate.addLangs(['es']);

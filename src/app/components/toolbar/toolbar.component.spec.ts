@@ -8,10 +8,13 @@ import { MatToolbarModule } from  '@angular/material/toolbar';
 import { MatIconModule } from  '@angular/material/icon';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ToolbarComponent } from './toolbar.component';
-import { HttpLoaderFactory } from 'src/app/app.module';
-
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const TRANSLATIONS_ES = require('../../../assets/i18n/es.json');
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 describe('ToolbarComponent', () => {
   let translate: TranslateService;

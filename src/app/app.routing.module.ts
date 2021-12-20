@@ -1,25 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './components/home/dashboard.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { DetailMovieModule } from './modules/detail-movie/detail-movie.module';
 import { MoviesListModule } from './modules/movies-list/movies-list.module';
 import { NewMovieModule } from './modules/new-movie/new-movie.module';
 
 
 export function MoviesListRouting(): any { return MoviesListModule; }
 export function NewMovieRouting(): any { return NewMovieModule; }
+export function DashboardRouting(): any { return DashboardModule; }
+export function DetailMovieRouting(): any { return DetailMovieModule; }
 // export function errorDetalle(): any { return ErrorsModule; }
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  {
+    path: '',
+    loadChildren: DashboardRouting
+  },
   { path: '', component: AppComponent, pathMatch: 'full' },
   {
-    path: 'movies/search',
+    path: 'movies',
     loadChildren: MoviesListRouting
   },
   {
-    path: 'movies/new',
+    path: 'movies',
     loadChildren: NewMovieRouting
+  },
+  {
+    path: 'movies',
+    loadChildren: DetailMovieRouting
   },
   // {
   //   path: 'error',

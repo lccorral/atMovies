@@ -1,12 +1,13 @@
 {
   "HOME": {
     "TITULO": "AtMovies",
+    "MENU": "Menú",
     "PELICULAS": "Películas",
     "ACTORES": "Actores",
     "ESTUDIOS": "Estudios"
   },
   "NUEVA_PELICULA": {
-    "TITULO": "Título",
+    "TITULO": "Nueva película",
     "POSTER": "Póster (url)",
     "GENEROS": "Géneros",
     "ANADIR_GENERO": "Añade un género",

@@ -7,13 +7,11 @@ import { MaterialModule } from  './modules/material.module';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
-import { DashboardComponent } from './components/home/dashboard.component';
 
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
+import { SharedModule } from './shared/shared.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -22,10 +20,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DashboardComponent,
-    ToolbarComponent,
-    SidenavListComponent,
+    AppComponent
   ],
   imports: [
     AppRoutingModule,
@@ -33,6 +28,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
