@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 // import { Comunicacion } from '../../models/comunicacion';
 // import { NotificaApiRestService } from '../../services/notifica-api-rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'movies-list',
@@ -15,10 +16,14 @@ export class MoviesListComponent implements OnInit {
   public loading = false;
 
   constructor(
+    @Inject(TranslateService) translate: TranslateService,
     @Inject(Location) private location: Location
     // private readonly router: Router,
     // private readonly rutaActiva: ActivatedRoute
-  ) {}
+  ) {
+    translate.addLangs(['es']);
+    translate.setDefaultLang('es');
+  }
 
   ngOnInit(): void {
     this.loading = true;

@@ -6,9 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MaterialModule } from '../material.module';
-
-import { HttpLoaderFactory } from 'src/app/app.module';
 import { NewMovieComponent } from './new-movie.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 
 describe('NewMovieComponent', () => {

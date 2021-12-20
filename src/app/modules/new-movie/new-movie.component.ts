@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject  } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild  } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Actor, Movie } from 'src/app/models/models';
@@ -10,7 +10,6 @@ import { Actor, Movie } from 'src/app/models/models';
   styleUrls: ['./new-movie.component.scss']
 })
 export class NewMovieComponent implements OnInit {
-
 formGroup: FormGroup;
 post: Movie;
 
@@ -63,7 +62,6 @@ constructor(@Inject(TranslateService) translate: TranslateService, private formB
 }
 
   ngOnInit() {
-
     this.allActorsValues = this.ACTORS.map(item =>
       {
         const format = {

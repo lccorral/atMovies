@@ -6,7 +6,7 @@ import { NewMovieComponent } from './new-movie.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'new',
     component: NewMovieComponent
   },
   // {

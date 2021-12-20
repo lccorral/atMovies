@@ -14,11 +14,13 @@ import { ChipsAutocompleteComponent } from 'src/app/components/chips-autocomplet
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     // BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
