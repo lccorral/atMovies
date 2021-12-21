@@ -14,7 +14,7 @@ import { GENRE } from '../../data/genre';
 @Component({
   selector: 'edit-movie',
   templateUrl: './edit-movie.component.html',
-  styleUrls: ['./edit-movie.component.scss']
+  styleUrls: ['../../scss/form.scss', './edit-movie.component.scss']
 })
 export class EditMovieComponent implements OnInit, OnDestroy {
   @ViewChild('chipActors') chipActors: ChipsAutocompleteComponent;
@@ -36,14 +36,7 @@ export class EditMovieComponent implements OnInit, OnDestroy {
 
   allActorsValues: { key: number, value: string }[] = [];
 
-  studios = [
-    {
-      name: 'Fox',
-    },
-    {
-      name: 'Marvel',
-    }
-  ];
+  studios: Company[] = [];
   postMoviesSubscription: Subscription;
   getActorsAllSubscription: Subscription;
   getActorsSubscription: Subscription;
@@ -57,10 +50,6 @@ constructor(
 ) {
   translate.addLangs(['es']);
   translate.setDefaultLang('es');
-
-  // const browserLang = translate.getBrowserLang();
-  // translate.use(browserLang.match(/es/) ? browserLang : 'es');
-  // translate.use('es');
 }
 
   ngOnInit() {

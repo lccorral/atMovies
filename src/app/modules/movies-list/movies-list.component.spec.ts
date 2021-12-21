@@ -62,18 +62,6 @@ describe('MoviesListComponent', () => {
           //   navigateByUrl = jest.fn();
           // },
         },
-        // {
-        //   provide: ActivatedRoute,
-        //   useValue: {
-        //     queryParams: from([{index: 1 }]),
-        //     params: from([{ id: 1 }]),
-        //     data: from([
-        //       {
-        //         modo: null,
-        //       },
-        //     ]),
-        //   },
-        // },
         { provide: ApiRestService, useClass: ApiRestServiceMock }
       ]
     })

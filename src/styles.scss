@@ -1,2 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css'
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  margin-top: 114px;
+  height: calc(100vh - 20px);
+  &-content {
+    color: white;
+    padding: 12px;
+  }
+}

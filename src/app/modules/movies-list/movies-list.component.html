@@ -10,7 +10,6 @@
     <div class="div-card" *ngFor="let movie of movies">
       <mat-card class="card">
         <mat-card-header>
-          <!-- <div mat-card-avatar class="example-header-image"></div> -->
           <mat-card-title>
             <a mat-list-item [routerLink]="'/movies/view/' + movie.id">
               {{movie.title}}
@@ -23,7 +22,7 @@
           </div>
         </mat-card-content>
         <mat-card-footer class="card-footer">
-          <span class="mr-3" *ngFor="let genre of movie.genre">#{{genre}}</span>
+          <span class="mr-3" *ngFor="let genre of movie.genre">#{{genre | translate}}</span>
         </mat-card-footer>
       </mat-card>
     </div>

@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiRestService } from '../../services/api-rest.service';
 import { Subscription } from 'rxjs';
@@ -12,7 +11,7 @@ import { Movie } from '../../models/models';
 @Component({
   selector: 'movies-list',
   templateUrl: './movies-list.component.html',
-  styleUrls: ['./movies-list.component.scss']
+  styleUrls: ['../../scss/detail.scss', './movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
 
@@ -25,8 +24,6 @@ export class MoviesListComponent implements OnInit {
     @Inject(Location) private location: Location,
     @Inject(ApiRestService) private apiRestService: ApiRestService,
     private snackBar: MatSnackBar
-    // private readonly router: Router,
-    // private readonly rutaActiva: ActivatedRoute
   ) {
     translate.addLangs(['es']);
     translate.setDefaultLang('es');

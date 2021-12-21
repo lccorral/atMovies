@@ -12,7 +12,7 @@ import * as TRANSLATIONS from '../../../assets/i18n/es.json';
 @Component({
   selector: 'detail-movie',
   templateUrl: './detail-movie.component.html',
-  styleUrls: ['./detail-movie.component.scss']
+  styleUrls: ['../../scss/detail.scss', './detail-movie.component.scss']
 })
 export class DetailMovieComponent implements OnInit {
 

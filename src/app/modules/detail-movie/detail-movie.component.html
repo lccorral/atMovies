@@ -36,13 +36,10 @@
           <h2>{{ 'NUEVA_PELICULA.GENEROS' | translate }}</h2>
           <mat-divider></mat-divider>
           <ng-container *ngFor="let genre of movie.genre">
-            <span class="mr-3">#{{genre}}</span>
+            <span class="mr-3">#{{genre | translate}}</span>
           </ng-container>
 
         </mat-card-content>
-        <!-- <mat-card-footer class="mat-footer">
-          <span>botones</span>
-        </mat-card-footer> -->
       </mat-card>
     </div>
 

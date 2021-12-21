@@ -13,9 +13,5 @@ export class DashboardComponent {
   constructor(@Inject(TranslateService) translate: TranslateService) {
     translate.addLangs(['es']);
     translate.setDefaultLang('es');
-
-    // const browserLang = translate.getBrowserLang();
-    // translate.use(browserLang.match(/es/) ? browserLang : 'es');
-    // translate.use('es');
   }
 }

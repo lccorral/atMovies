@@ -13,7 +13,7 @@ import { GENRE } from '../../data/genre';
 @Component({
   selector: 'new-movie',
   templateUrl: './new-movie.component.html',
-  styleUrls: ['./new-movie.component.scss']
+  styleUrls: ['../../scss/form.scss', './new-movie.component.scss']
 })
 export class NewMovieComponent implements OnInit, OnDestroy {
   @ViewChild('chipActors') chipActors: ChipsAutocompleteComponent;

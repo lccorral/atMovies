@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
-// import { ErrorsModule } from '@jccm/core';
 
 // export function errorDetalleRouting(): any { return ErrorsModule; };
 
