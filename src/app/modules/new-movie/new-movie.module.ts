@@ -10,11 +10,12 @@ import { MaterialModule } from  '../.././modules/material.module';
 
 import { NewMovieComponent } from './new-movie.component';
 import { NewMovieRoutingModule } from './new-movie-routing.module';
-import { ChipsAutocompleteComponent } from 'src/app/components/chips-autocomplete/chips-autocomplete.component';
+import { ChipsAutocompleteComponent } from '../../components/chips-autocomplete/chips-autocomplete.component';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -34,6 +35,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     // BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     SharedModule,
     TranslateModule.forRoot({
       loader: {

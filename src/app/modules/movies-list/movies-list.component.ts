@@ -1,9 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-// import { Comunicacion } from '../../models/comunicacion';
-// import { NotificaApiRestService } from '../../services/notifica-api-rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { ApiRestService } from '../../services/api-rest.service';
+import { Subscription } from 'rxjs';
+
+import * as TRANSLATIONS from '../../../assets/i18n/es.json';
+import { Movie } from '../../models/models';
 
 @Component({
   selector: 'movies-list',
@@ -12,12 +16,15 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class MoviesListComponent implements OnInit {
 
-  // public jccmSpinner = '/assets/eCLM_spinner.gif';
-  public loading = false;
+  isLoadingResults = true;
+  getMoviesSubscription: Subscription;
+  movies: Movie[];
 
   constructor(
     @Inject(TranslateService) translate: TranslateService,
-    @Inject(Location) private location: Location
+    @Inject(Location) private location: Location,
+    @Inject(ApiRestService) private apiRestService: ApiRestService,
+    private snackBar: MatSnackBar
     // private readonly router: Router,
     // private readonly rutaActiva: ActivatedRoute
   ) {
@@ -26,50 +33,28 @@ export class MoviesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loading = true;
-    // this.rutaActiva.queryParams.subscribe((queryParam) => {
-    //   if (queryParam.index) {
-    //     this.selectedTabIndex = queryParam.index;
-    //   }
-    // });
-    // this.rutaActiva.params.subscribe((param) => {
-    //   this.idComunica = param.id;
-    //   this.notificaService.getComunicacion$(this.idComunica)
-    //     .subscribe(data => {
-    //       this.notificaData = data;
-    //       this.loading = false;
-    //       this.dataLoaded = true;
+    // this.isLoadingResults = true;
 
-    //       switch(data.estado){
-    //       case 'Pendiente':
-    //         this.colorEstado = 'icon-circle-pendiente';
-    //         break;
-    //       case 'Aceptada':
-    //         this.colorEstado = 'icon-circle-aceptada';
-    //         break;
-    //       case 'Expirada':
-    //         this.colorEstado = 'icon-circle-expirada';
-    //         break;
-    //       case 'Anulada':
-    //         this.colorEstado = 'icon-circle-anulada';
-    //         break;
-    //       case 'Caducada':
-    //         this.colorEstado = 'icon-circle-caducada';
-    //         break;
-    //       case 'Retirada':
-    //         this.colorEstado = 'icon-circle-retirada';
-    //         break;
-    //       case 'Rechazada':
-    //         this.colorEstado = 'icon-circle-rechazada';
-    //         break;
-    //       }
-    //     },
-    //     () => {
-    //       this.router.navigateByUrl('/layout/notifica/comunicaciones/error/not-found');
-    //       this.dataLoaded = false;
-    //       this.loading = false;
-    //     });
-    // });
+    this.getMoviesSubscription = this.apiRestService.getMovies$()
+    .subscribe((data: Movie[]) => {
+      this.movies = data;
+      console.log(data);
+      this.isLoadingResults = false;
+    },
+    () => {
+      // this.dataLoaded = false;
+      this.isLoadingResults = false;
+      this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
+        duration: 10000,
+        verticalPosition: 'top'
+      });
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.getMoviesSubscription) {
+      this.getMoviesSubscription.unsubscribe();
+    }
   }
 
   back(): void{

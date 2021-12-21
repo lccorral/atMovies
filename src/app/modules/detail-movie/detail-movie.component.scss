@@ -11,13 +11,16 @@ h2 {
   font-size: 20px;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.div-card {
+  display: flex;
+  justify-content: center;
 }
 
-.mat-footer {
-  margin-top: -32px;
+.card {
+  max-width: 400px;
+  &-footer {
+    margin-top: -32px;
+  }
 }
 
 .btn-add {
@@ -26,10 +29,27 @@ h2 {
   padding: 16px;
   color: white;
   border-radius: 50%;
+  &--red {
+    background-color: red;
+  }
 }
 
 :host::ng-deep {
   .mat-card-image {
     padding: 16px;
+    min-width: 400px;
   }
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  margin-top: 114px;
+  height: calc(100vh - 20px);
+  &-content {
+    color: white;
+    padding: 12px;
+  }
+}
+

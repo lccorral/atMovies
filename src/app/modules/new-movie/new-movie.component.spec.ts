@@ -8,6 +8,8 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { MaterialModule } from '../material.module';
 import { NewMovieComponent } from './new-movie.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
+import { ChipsAutocompleteComponent } from '../../components/chips-autocomplete/chips-autocomplete.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -22,7 +24,9 @@ describe('NewMovieComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        NewMovieComponent
+        NewMovieComponent,
+        ToolbarComponent,
+        ChipsAutocompleteComponent
       ],
       imports: [
         BrowserAnimationsModule,

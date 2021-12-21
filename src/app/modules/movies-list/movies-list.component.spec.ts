@@ -1,17 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MoviesListComponent } from './movies-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-// import { AppConfigEnvironmentCoreServiceMock, NotificaApiRestServiceMock } from '../../test-mocks';
 import { DatePipe, Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-// import { NotificaApiRestService } from '../../services/notifica-api-rest.service';
 import { from, of } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ApiRestServiceMock } from '../../../../test-mocks';
+import { ApiRestService } from '../../services/api-rest.service';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavListComponent } from '../../components/sidenav-list/sidenav-list.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 describe('MoviesListComponent', () => {
   let component: MoviesListComponent;
@@ -19,17 +32,29 @@ describe('MoviesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      declarations: [ MoviesListComponent, SidenavListComponent, ToolbarComponent ],
       imports: [
         HttpClientModule,
         HttpClientTestingModule,
         MatCardModule,
         MatIconModule,
-        BrowserAnimationsModule
+        MatListModule,
+        MatProgressSpinnerModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        BrowserAnimationsModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+          }
+        })
       ],
-      declarations: [ MoviesListComponent ],
       providers: [
         DatePipe,
         Location,
+        TranslateService,
         {
           provide: Router,
           // useClass: class {
@@ -49,8 +74,7 @@ describe('MoviesListComponent', () => {
         //     ]),
         //   },
         // },
-        // {provide: NotificaApiRestService, useClass: NotificaApiRestServiceMock},
-        // { provide: EnvironmentCoreService, useClass: AppConfigEnvironmentCoreServiceMock }
+        { provide: ApiRestService, useClass: ApiRestServiceMock }
       ]
     })
       .compileComponents();

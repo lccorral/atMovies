@@ -8,9 +8,11 @@ import {MatCardModule} from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -29,6 +31,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatCardModule,
     MatIconModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
     SharedModule,
     TranslateModule.forRoot({
       loader: {

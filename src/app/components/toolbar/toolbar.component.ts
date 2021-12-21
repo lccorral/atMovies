@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -12,14 +11,7 @@ export class ToolbarComponent {
 @Input() isMain: boolean;
 @Output() SideNavToggle = new EventEmitter();
 
- constructor(@Inject(TranslateService) translate: TranslateService) {
-  translate.addLangs(['es']);
-  translate.setDefaultLang('es');
-
-  // const browserLang = translate.getBrowserLang();
-  // translate.use(browserLang.match(/es/) ? browserLang : 'es');
-  // translate.use('es');
-}
+ constructor() {}
 
   openSidenav() {
    this.SideNavToggle.emit();

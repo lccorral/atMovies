@@ -4,7 +4,8 @@
     "MENU": "Menú",
     "PELICULAS": "Películas",
     "ACTORES": "Actores",
-    "ESTUDIOS": "Estudios"
+    "ESTUDIOS": "Estudios",
+    "SNACKBAR_OK": "Operación realizada con éxito"
   },
   "NUEVA_PELICULA": {
     "NUEVA": "Nueva película",
@@ -21,5 +22,9 @@
     "PUNTUACION": "Puntuación",
     "CAMPO_REQUERIDO": "requerido",
     "CAMPO_REQUERIDA": "requerida"
+  },
+  "ERROR": {
+    "ERROR_MOVIES": "Error en la petición de películas",
+    "CLOSE": "Cerrar"
   }
 }

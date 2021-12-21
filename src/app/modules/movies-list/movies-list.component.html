@@ -4,36 +4,43 @@
     <app-sidenav-list (closeSideNav)="sidenav.close()"></app-sidenav-list>
   </mat-sidenav>
 
-  <mat-sidenav-content>
+  <mat-sidenav-content *ngIf="!isLoadingResults; else whileLoading">
     <app-toolbar [title]="'HOME.PELICULAS' | translate" [isMain]="true" (SideNavToggle)="sidenav.toggle()"></app-toolbar>
 
-    <mat-card class="example-card">
-      <mat-card-header>
-        <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <mat-card-title>Shiba Inu</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div>
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        </div>
-      </mat-card-content>
-      <mat-card-footer class="mat-footer">
-        <span>#drama</span>
-        <span>#drama</span>
-      </mat-card-footer>
-      <!-- <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions> -->
-    </mat-card>
+    <div class="div-card" *ngFor="let movie of movies">
+      <mat-card class="card">
+        <mat-card-header>
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <mat-card-title>
+            <a mat-list-item [routerLink]="'/movies/view/' + movie.id">
+              {{movie.title}}
+            </a>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div>
+            <img mat-card-image [src]="movie.poster" [alt]="movie.title">
+          </div>
+        </mat-card-content>
+        <mat-card-footer class="card-footer">
+          <span class="mr-3" *ngFor="let genre of movie.genre">#{{genre}}</span>
+        </mat-card-footer>
+      </mat-card>
+    </div>
 
-    <!-- <div class="row"> -->
-      <div class="col-12 pt-3 text-right">
-        <button mat-fab class="btn-add" color="primary" [routerLink]="['/movies/new']" aria-label="Guardar película">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
-    <!-- </div> -->
+    <div class="pt-3 text-right">
+      <button mat-fab class="btn-add" color="primary" [routerLink]="['/movies/new']" aria-label="Guardar película">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
 
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<ng-template #whileLoading>
+  <div class="spinner">
+    <div class="spiner-content">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</ng-template>

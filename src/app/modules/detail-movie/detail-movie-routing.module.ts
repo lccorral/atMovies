@@ -7,7 +7,7 @@ import { DetailMovieComponent } from './detail-movie.component';
 
 const routes: Routes = [
   {
-    path: 'view',
+    path: 'view/:id',
     component: DetailMovieComponent,
   },
   // {

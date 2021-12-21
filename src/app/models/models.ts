@@ -2,7 +2,7 @@ export interface Movie {
   id: number;
   title: string;
   poster: string;
-  genre: string;
+  genre: string[];
   year: number;
   duration: number;
   imdbRating: number;
@@ -29,4 +29,10 @@ export interface Company {
   employees: number;
   rating: number;
   movies: number[] | null;
+}
+
+export interface ResponseApiRest {
+  movie: Movie[];
+  actors: Actor[];
+  companies: Company[];
 }

@@ -25,14 +25,14 @@
 
       <!-- Generos -->
       <div class="col-12 col-md-6">
-        <chips-autocomplete data-cy="category"
+        <chips-autocomplete data-cy="genre"
           [label]="'NUEVA_PELICULA.GENEROS' | translate"
           [allElements]="allCategoryValues"
           [showIdChip]="false"
           [isWriteMode]="true"
-          [valueInput]="category.value"
+          [valueInput]="genre.value"
           [placeholderInput]="'NUEVA_PELICULA.ANADIR_GENERO' | translate"
-          formControlName="category">
+          formControlName="genre">
         </chips-autocomplete>
       </div>
 
@@ -84,9 +84,9 @@
 
       <div class="col-12 col-md-4">
         <mat-form-field class="form-element" floatLabel="always">
-          <mat-label class="label-form" for="score">{{ 'NUEVA_PELICULA.PUNTUACION' | translate }}</mat-label>
-          <input matInput type="number" data-cy="score" [placeholder]="'NUEVA_PELICULA.PUNTUACION' | translate" formControlName="score" required>
-          <mat-error *ngIf="!score.valid && score.touched">
+          <mat-label class="label-form" for="imdbRating">{{ 'NUEVA_PELICULA.PUNTUACION' | translate }}</mat-label>
+          <input matInput type="number" data-cy="imdbRating" [placeholder]="'NUEVA_PELICULA.PUNTUACION' | translate" formControlName="imdbRating" required>
+          <mat-error *ngIf="!imdbRating.valid && imdbRating.touched">
             <strong>{{ 'NUEVA_PELICULA.PUNTUACION' | translate }}</strong> {{ 'NUEVA_PELICULA.CAMPO_REQUERIDA' | translate }}
           </mat-error>
         </mat-form-field>

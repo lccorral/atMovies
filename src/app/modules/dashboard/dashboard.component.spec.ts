@@ -5,10 +5,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import { MaterialModule } from 'src/app/modules/material.module';
+import { MaterialModule } from '../../modules/material.module';
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SidenavListComponent } from '../../components/sidenav-list/sidenav-list.component';
+import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -21,7 +23,9 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        DashboardComponent
+        DashboardComponent,
+        ToolbarComponent,
+        SidenavListComponent
       ],
       imports: [
         BrowserAnimationsModule,

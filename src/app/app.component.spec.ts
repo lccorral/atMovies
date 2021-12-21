@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { MaterialModule } from 'src/app/modules/material.module';
+import { MaterialModule } from './modules/material.module';
 import { AppComponent } from './app.component';
 
 describe('DashboardComponent', () => {

@@ -1,17 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-// import { AppConfigEnvironmentCoreServiceMock, NotificaApiRestServiceMock } from '../../test-mocks';
 import { DatePipe, Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-// import { NotificaApiRestService } from '../../services/notifica-api-rest.service';
 import { from, of } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { DetailMovieComponent } from './detail-movie.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
+
 
 describe('DetailMovieComponent', () => {
   let component: DetailMovieComponent;
@@ -24,7 +31,15 @@ describe('DetailMovieComponent', () => {
         HttpClientTestingModule,
         MatCardModule,
         MatIconModule,
-        BrowserAnimationsModule
+        MatProgressSpinnerModule,
+        BrowserAnimationsModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+          }
+        })
       ],
       declarations: [ DetailMovieComponent ],
       providers: [
@@ -32,25 +47,22 @@ describe('DetailMovieComponent', () => {
         Location,
         {
           provide: Router,
-          // useClass: class {
-          //   navigate = jest.fn();
-          //   navigateByUrl = jest.fn();
-          // },
+          useClass: class {
+            navigate = jest.fn();
+            navigateByUrl = jest.fn();
+          },
         },
-        // {
-        //   provide: ActivatedRoute,
-        //   useValue: {
-        //     queryParams: from([{index: 1 }]),
-        //     params: from([{ id: 1 }]),
-        //     data: from([
-        //       {
-        //         modo: null,
-        //       },
-        //     ]),
-        //   },
-        // },
-        // {provide: NotificaApiRestService, useClass: NotificaApiRestServiceMock},
-        // { provide: EnvironmentCoreService, useClass: AppConfigEnvironmentCoreServiceMock }
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: from([{ id: 1 }]),
+            // data: from([
+            //   {
+            //     modo: null,
+            //   },
+            // ]),
+          },
+        }
       ]
     })
       .compileComponents();
