@@ -53,6 +53,39 @@ export class ApiRestServiceMock {
   }
 
   // ACTORS
+  public getActors$(): Observable<Actor[]> {
+    return new Observable<Actor[]>((observer) => {
+      observer.next([
+        {
+          "id": 1,
+          "first_name": "Isaak",
+          "last_name": "McQuode",
+          "gender": "Male",
+          "bornCity": "Ciduren",
+          "birthdate": "24/12/1957",
+          "img": "http://dummyimage.com/600x400.png/dddddd/000000",
+          "rating": 2.03,
+          "movies": [
+            3,
+            7
+          ]
+        },
+        {
+          "id": 2,
+          "first_name": "Rory",
+          "last_name": "Chanders",
+          "gender": "Male",
+          "bornCity": "Cijengkol",
+          "birthdate": "19/04/1975",
+          "img": "http://dummyimage.com/600x400.png/5fa2dd/000000",
+          "rating": 2.43,
+          "movies": []
+        }
+      ]);
+      observer.complete();
+    });
+  }
+
   public getActor(): Observable<Actor> {
     return new Observable<Actor>((observer) => {
       observer.next(

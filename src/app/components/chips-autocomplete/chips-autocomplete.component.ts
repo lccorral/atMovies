@@ -95,7 +95,10 @@ export class ChipsAutocompleteComponent implements ControlValueAccessor {
     const filterElements = this.allElements.filter(el => !this.selectedElements.some(item => item.key === el.key));
     if (filter && typeof filter === 'string') {
       const filterLc = filter.toLowerCase();
-      return filterElements.filter(item => item.key.toLowerCase().indexOf(filterLc) === 0 || item.value.toLowerCase().indexOf(filterLc) === 0);
+      return filterElements.filter(item => {
+        const key = item.key.toString();
+        return key.toLowerCase().indexOf(filterLc) === 0 || item.value.toLowerCase().indexOf(filterLc) === 0
+      });
     } else if (filter && typeof filter === 'number') {
       let filterLc = filter + '';
       filterLc = filterLc.toLowerCase();

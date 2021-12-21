@@ -21,10 +21,23 @@
     "DURACION": "Duración",
     "PUNTUACION": "Puntuación",
     "CAMPO_REQUERIDO": "requerido",
-    "CAMPO_REQUERIDA": "requerida"
+    "CAMPO_REQUERIDA": "requerida",
+    "EDITAR": "Editar película"
   },
   "ERROR": {
     "ERROR_MOVIES": "Error en la petición de películas",
     "CLOSE": "Cerrar"
-  }
+  },
+  "Comedy": "Comedia",
+  "Musical": "Musical",
+  "Romance": "Romance",
+  "Horror": "Horror",
+  "Thriller": "Thriller",
+  "Drama": "Drama",
+  "War": "Guerra",
+  "Adventure": "Adventura",
+  "Crime": "Crimen",
+  "Action": "Acción",
+  "Animation": "Animación",
+  "Sci-Fi": "Ciencia ficción"
 }

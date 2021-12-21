@@ -28,7 +28,7 @@
     </mat-chip-list>
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
       <mat-option *ngFor="let item of filteredItems | async" [value]="item.key">
-        {{item.value}}
+        {{item.value | translate}}
       </mat-option>
     </mat-autocomplete>
 

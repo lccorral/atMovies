@@ -1,6 +1,6 @@
 
 import { Inject, Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { Actor, Company, Movie } from '../models/models';
@@ -33,6 +33,12 @@ export class ApiRestService {
   }
 
   // ACTORS
+  public getActors$(): Observable<Actor[]> {
+    return this.http.get<Actor[]>(
+      this.URL + this.SUB_URL_ACTORS
+    );
+  }
+
   public getActor$(id: number): Observable<Actor> {
     return this.http.get<Actor>(
       this.URL + this.SUB_URL_ACTORS + '/' + id

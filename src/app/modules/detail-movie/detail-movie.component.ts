@@ -1,8 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-// import { Comunicacion } from '../../models/comunicacion';
-// import { NotificaApiRestService } from '../../services/notifica-api-rest.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiRestService } from '../../services/api-rest.service';
 import { forkJoin, Subscription } from 'rxjs';
@@ -35,7 +33,6 @@ export class DetailMovieComponent implements OnInit {
     @Inject(Location) private location: Location,
     private readonly apiRestService: ApiRestService,
     private snackBar: MatSnackBar,
-    private readonly router: Router,
     private readonly rutaActiva: ActivatedRoute
   ) {
     translate.addLangs(['es']);
@@ -63,67 +60,26 @@ export class DetailMovieComponent implements OnInit {
               this.getActorsSubscription = this.apiRestService.getActor$(element)
                 .subscribe(response => {
                   this.actors.push(response);
+                  if (Object.is(arr.length - 1, key)) {
+                    this.actorsFinished = true;
+                    if (this.compayFinished && this.actorsFinished) {
+                      this.isLoadingResults = false;
+                    }
+                  }
                 },
                 () => {
                   // this.loading = false;
                   // this.dataLoaded = false;
                 });
-                if (Object.is(arr.length - 1, key)) {
-                  this.actorsFinished = true;
-                  // console.log(`Last callback call at index ${key} with value ${element}` );
-                }
             });
           } else {
             this.actorsFinished = true;
           }
-
-          if (this.compayFinished && this.actorsFinished) {
-            this.isLoadingResults = false;
-          }
-
         }, error => {
           console.error(error);
           this.isLoadingResults = false;
         } );
-
-
-      // this.apiRestService.getMovie$(this.id)
-      //   .subscribe(data => {
-      //     this.movie = data;
-
-      //     if (this.movie.actors?.length > 0) {
-      //       this.movie.actors.forEach(element => {
-
-      //         this.getActorsSubscription = this.apiRestService.getActor$(element)
-      //           .subscribe(response => {
-      //             this.actors.push(response);
-      //           },
-      //           () => {
-      //             // this.loading = false;
-      //             // this.dataLoaded = false;
-      //           });
-      //       });
-      //     }
-      //     this.isLoadingResults = false;
-      //     // this.dataLoaded = true;
-      //   },
-      //   () => {
-      //     this.router.navigateByUrl('/movies/error/not-found');
-      //     // this.dataLoaded = false;
-      //     this.isLoadingResults = false;
-      //   });
     });
-
-    // this.getCompaniesSubscription = this.apiRestService.getCompanies$()
-    //   .subscribe(data => {
-    //     this.company = data.find(c => {
-    //       return c.movies.includes(this.id);
-    //     })
-    //   },
-    //   () => {
-    //     // this.loading = false;
-    //     // this.dataLoaded = false;
-    //   });
   }
 
   ngOnDestroy(): void {
