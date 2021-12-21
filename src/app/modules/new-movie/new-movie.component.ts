@@ -1,61 +1,35 @@
-import { Component, OnInit, Inject  } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, OnDestroy  } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
-import { Actor, Movie } from '../../models/models';
+import { forkJoin, Subscription } from 'rxjs';
+import { Actor, Company, Movie } from '../../models/models';
 import { ApiRestService } from '../../services/api-rest.service';
+import { ChipsAutocompleteComponent } from '../../components/chips-autocomplete/chips-autocomplete.component';
 
 import * as TRANSLATIONS from '../../../assets/i18n/es.json';
+import { GENRE } from '../../data/genre';
 
 @Component({
   selector: 'new-movie',
   templateUrl: './new-movie.component.html',
   styleUrls: ['./new-movie.component.scss']
 })
-export class NewMovieComponent implements OnInit {
+export class NewMovieComponent implements OnInit, OnDestroy {
+  @ViewChild('chipActors') chipActors: ChipsAutocompleteComponent;
+  @ViewChild('chipGenres') chipGenres: ChipsAutocompleteComponent;
+
   formGroup: FormGroup;
   post: Movie;
 
-  isLoadingResults = false;
-  allCategoryValues: {key: string; value: string}[] = [
-    {
-      key: 'Comedy',
-      value: 'Comedia'
-    },
-    {
-      key: 'Musical',
-      value: 'Musical'
-    },
-    {
-      key: 'Romance',
-      value: 'Romance'
-    }
-  ];
-  ACTORS: Actor[] = [
-    {
-      "id": 1,
-      "first_name": "Isaak",
-      "last_name": "McQuode",
-      "gender": "Male",
-      "bornCity": "Ciduren",
-      "birthdate": "24/12/1957",
-      "img": "http://dummyimage.com/600x400.png/dddddd/000000",
-      "rating": 2.03,
-      "movies": [3, 7]
-    }
-  ];
+  isLoadingResults = true;
+  allCategoryValues: {key: string; value: string}[] = GENRE;
+  ACTORS: Actor[] = [];
 
   allActorsValues: { key: number, value: string }[] = [];
 
-  studios = [
-    {
-      name: 'Fox',
-    },
-    {
-      name: 'Marvel',
-    }
-  ];
+  studios: Company[] = [];
+  getActorsAllSubscription: Subscription;
   postMoviesSubscription: Subscription;
 
 constructor(
@@ -72,17 +46,39 @@ constructor(
   // translate.use('es');
 }
 
-  ngOnInit() {
-    this.allActorsValues = this.ACTORS.map(item =>
-      {
-        const format = {
-          key:item.id,
-          value: item.first_name + ' ' + item.last_name
-        };
-        return format;
-      });
+  ngOnInit(): void {
+    forkJoin([
+      this.apiRestService.getActors$(),
+      this.apiRestService.getCompanies$()]).subscribe(
+      (respuestaFork: any) => {
+        this.allActorsValues = respuestaFork[0].map(item =>
+          {
+            const format = {
+              key:item.id,
+              value: item.first_name + ' ' + item.last_name
+            };
+            return format;
+          });
 
-    this.createForm();
+        this.studios = respuestaFork[1].map(item =>
+          {
+            const format = {
+              key:item.id,
+              name: item.name
+            };
+            return format;
+          });
+        this.createForm();
+      }, error => {
+        console.error(error);
+        this.isLoadingResults = false;
+      } );
+  }
+
+  ngOnDestroy(): void {
+    if (this.getActorsAllSubscription) {
+      this.getActorsAllSubscription.unsubscribe();
+    }
   }
 
   get title() {
@@ -128,31 +124,40 @@ constructor(
       'duration': [null, Validators.required],
       'imdbRating': [null, Validators.required]
     });
+    this.isLoadingResults = false;
   }
 
   onSubmit(post) {
     this.post = post;
     console.log(this.post);
 
-
-    this.postMoviesSubscription = this.apiRestService.postMovie$(this.post)
-    .subscribe((data: Movie) => {
-      console.log(data);
-      this.isLoadingResults = false;
-      this.snackBar.open(TRANSLATIONS.HOME.SNACKBAR_OK, TRANSLATIONS.ERROR.CLOSE,  {
-        duration: 10000,
-        verticalPosition: 'top'
-      });
-      this.formGroup.reset();
-    },
-    () => {
-      // this.dataLoaded = false;
-      this.isLoadingResults = false;
-      this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
-        duration: 10000,
-        verticalPosition: 'top'
-      });
-    });
+    if (this.formGroup.valid) {
+      this.postMoviesSubscription = this.apiRestService.postMovie$(this.post)
+        .subscribe((data: Movie) => {
+          console.log(data);
+          this.isLoadingResults = false;
+          this.snackBar.open(TRANSLATIONS.HOME.SNACKBAR_OK, TRANSLATIONS.ERROR.CLOSE, {
+            duration: 10000,
+            verticalPosition: 'top'
+          });
+          this.formGroup.reset();
+        },
+        () => {
+          // this.dataLoaded = false;
+          this.isLoadingResults = false;
+          this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE, {
+            duration: 10000,
+            verticalPosition: 'top'
+          });
+        });
+    } else {
+      if (!this.post.actors || this.post.actors.length === 0) {
+        this.chipActors.touched = true;
+      }
+      if (!this.post.genre || this.post.genre.length === 0) {
+        this.chipGenres.touched = true;
+      }
+    }
   }
 
 }

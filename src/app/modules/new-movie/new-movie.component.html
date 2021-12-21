@@ -1,5 +1,5 @@
 <app-toolbar [title]="'NUEVA_PELICULA.NUEVA' | translate" [isMain]="false"></app-toolbar>
-<div class="container">
+<div class="container"  *ngIf="!isLoadingResults; else whileLoading">
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form d-inline">
 
     <div class="row">
@@ -25,7 +25,7 @@
 
       <!-- Generos -->
       <div class="col-12 col-md-6">
-        <chips-autocomplete data-cy="genre"
+        <chips-autocomplete #chipGenres data-cy="genre"
           [label]="'NUEVA_PELICULA.GENEROS' | translate"
           [allElements]="allCategoryValues"
           [showIdChip]="false"
@@ -38,7 +38,7 @@
 
       <!-- Actores -->
       <div class="col-12 col-md-6">
-        <chips-autocomplete data-cy="actors"
+        <chips-autocomplete #chipActors data-cy="actors"
           [label]="'NUEVA_PELICULA.ACTORES' | translate"
           [allElements]="allActorsValues"
           [showIdChip]="false"
@@ -101,3 +101,11 @@
 
   </form>
 </div>
+
+<ng-template #whileLoading>
+  <div class="spinner">
+    <div class="spiner-content">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</ng-template>

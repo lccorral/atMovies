@@ -3,19 +3,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { BrowserModule } from '@angular/platform-browser';
 
 import { MaterialModule } from  '../.././modules/material.module';
-
 import { NewMovieComponent } from './new-movie.component';
 import { NewMovieRoutingModule } from './new-movie-routing.module';
-import { ChipsAutocompleteComponent } from '../../components/chips-autocomplete/chips-autocomplete.component';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from '../../shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChipsAutoCompleteModule } from '../chipsAutocomplete.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -25,16 +23,16 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 @NgModule({
   declarations: [
-    NewMovieComponent,
-    ChipsAutocompleteComponent
+    NewMovieComponent
   ],
   imports: [
     NewMovieRoutingModule,
     CommonModule,
     HttpClientModule,
-    // BrowserAnimationsModule,
     MaterialModule,
+    ChipsAutoCompleteModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
     MatSnackBarModule,
     SharedModule,
     TranslateModule.forRoot({

@@ -31,3 +31,15 @@
 .button {
   width: 100%;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  margin-top: 114px;
+  height: calc(100vh - 20px);
+  &-content {
+    color: white;
+    padding: 12px;
+  }
+}

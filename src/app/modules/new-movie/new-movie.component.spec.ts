@@ -10,6 +10,7 @@ import { NewMovieComponent } from './new-movie.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { ChipsAutocompleteComponent } from '../../components/chips-autocomplete/chips-autocomplete.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -31,6 +32,7 @@ describe('NewMovieComponent', () => {
       imports: [
         BrowserAnimationsModule,
         MaterialModule,
+        MatProgressSpinnerModule,
         HttpClientTestingModule,
         TranslateModule.forRoot({
           loader: {
