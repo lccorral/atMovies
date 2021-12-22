@@ -1,0 +1,15 @@
+.sidenav-list {
+  padding: 13px;
+  width: 35vh;
+  &-link {
+    width: 100%;
+    display: flex!important;
+    justify-content: space-between;
+    &--menu {
+      border-bottom: 1px solid black;
+    }
+  }
+  span {
+    padding-left: 8px;
+  }
+}

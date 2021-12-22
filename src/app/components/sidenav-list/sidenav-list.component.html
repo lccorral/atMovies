@@ -1,0 +1,43 @@
+<mat-nav-list class="sidenav-list">
+  <div class="sidenav-list-link">
+    <div>
+      <h2>{{ 'HOME.MENU' | translate }}</h2>
+    </div>
+    <div>
+      <mat-icon (click)="onToggleClose()">close</mat-icon>
+    </div>
+  </div>
+
+  <a mat-list-item [routerLink]="['/movies/search']" data-cy="link-peliculas" (click)="onToggleClose()">
+    <div class="sidenav-list-link sidenav-list-link--menu">
+      <div>
+        <span class="js-movies">{{ 'HOME.PELICULAS' | translate }}</span>
+      </div>
+      <div>
+        <mat-icon>east</mat-icon>
+      </div>
+    </div>
+  </a>
+
+  <a mat-list-item [routerLink]="['/movies/search']" (click)="onToggleClose()">
+    <div class="sidenav-list-link sidenav-list-link--menu">
+      <div>
+        <span>{{ 'HOME.ACTORES' | translate }}</span>
+      </div>
+      <div>
+        <mat-icon>east</mat-icon>
+      </div>
+    </div>
+  </a>
+
+  <a mat-list-item [routerLink]="['/movies/search']" (click)="onToggleClose()">
+    <div class="sidenav-list-link sidenav-list-link--menu">
+      <div>
+        <span>{{ 'HOME.ESTUDIOS' | translate }}</span>
+      </div>
+      <div>
+        <mat-icon>east</mat-icon>
+      </div>
+    </div>
+  </a>
+</mat-nav-list>

@@ -1,0 +1,15 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav>
+    <app-sidenav-list (closeSideNav)="sidenav.close()"></app-sidenav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-toolbar [title]="'HOME.PELICULAS' | translate" [isMain]="true" (SideNavToggle)="sidenav.toggle()"></app-toolbar>
+
+    <!-- <main>
+      <dashboard></dashboard>
+    </main> -->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

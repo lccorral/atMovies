@@ -1,0 +1,46 @@
+{
+  "HOME": {
+    "TITULO": "AtMovies",
+    "MENU": "Menú",
+    "PELICULAS": "Películas",
+    "ACTORES": "Actores",
+    "ESTUDIOS": "Estudios",
+    "SNACKBAR_OK": "Operación realizada con éxito"
+  },
+  "NUEVA_PELICULA": {
+    "NUEVA": "Nueva película",
+    "TITULO": "Título",
+    "POSTER": "Póster (url)",
+    "GENEROS": "Géneros",
+    "ANADIR_GENERO": "Añade un género",
+    "ACTORES": "Actores",
+    "SELECCIONA_ACTOR": "Selecciona un actor",
+    "ESTUDIO": "Estudio",
+    "SELECCIONA_ESTUDIO": "Selecciona un estudio",
+    "ANIO": "Año",
+    "DURACION": "Duración",
+    "PUNTUACION": "Puntuación",
+    "CAMPO_REQUERIDO": "requerido",
+    "CAMPO_REQUERIDA": "requerida",
+    "EDITAR": "Editar película",
+    "GUARDAR": "Guardar película",
+    "BORRAR": "Borrar película"
+  },
+  "ERROR": {
+    "ERROR": "Error en el servicio",
+    "ERROR_MOVIES": "Error en la petición de películas",
+    "CLOSE": "Cerrar"
+  },
+  "Comedy": "Comedia",
+  "Musical": "Musical",
+  "Romance": "Romance",
+  "Horror": "Horror",
+  "Thriller": "Thriller",
+  "Drama": "Drama",
+  "War": "Guerra",
+  "Adventure": "Adventura",
+  "Crime": "Crimen",
+  "Action": "Acción",
+  "Animation": "Animación",
+  "Sci-Fi": "Ciencia ficción"
+}

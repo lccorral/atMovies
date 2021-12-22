@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <div>
+    <button [hidden]="!isMain" data-cy="menu-main" mat-icon-button (click)="openSidenav()">
+      <mat-icon>{{isMain ? 'menu' : 'arrow_back'}}</mat-icon>
+    </button>
+
+    <button [hidden]="isMain" data-cy="menu-arrow" mat-icon-button [routerLink]="['/movies/search']">
+      <mat-icon>{{isMain ? 'menu' : 'arrow_back'}}</mat-icon>
+    </button>
+  </div>
+
+
+  <h1 class="app-name">{{ title }}</h1>
+</mat-toolbar>
