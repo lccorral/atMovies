@@ -13,7 +13,6 @@ export function NewMovieRouting(): any { return NewMovieModule; }
 export function DashboardRouting(): any { return DashboardModule; }
 export function DetailMovieRouting(): any { return DetailMovieModule; }
 export function EditMovieRouting(): any { return EditMovieModule; }
-// export function errorDetalle(): any { return ErrorsModule; }
 
 const routes: Routes = [
   {
@@ -37,10 +36,6 @@ const routes: Routes = [
     path: 'movies',
     loadChildren: EditMovieRouting
   },
-  // {
-  //   path: 'error',
-  //   loadChildren: errorDetalle
-  // },
   {
     path: '**',
     redirectTo: 'error',

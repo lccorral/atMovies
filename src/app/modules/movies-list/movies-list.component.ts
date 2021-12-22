@@ -30,8 +30,6 @@ export class MoviesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.isLoadingResults = true;
-
     this.getMoviesSubscription = this.apiRestService.getMovies$()
     .subscribe((data: Movie[]) => {
       this.movies = data;
@@ -53,7 +51,7 @@ export class MoviesListComponent implements OnInit {
   }
 
   back(): void{
-    this.location.back(); // <-- go back to previous location on cancel
+    this.location.back();
   }
 
 }
