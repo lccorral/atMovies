@@ -7,6 +7,7 @@ export interface Movie {
   duration: number;
   imdbRating: number;
   actors: number[] | null;
+  studio?: string;
 }
 
 export interface Actor {

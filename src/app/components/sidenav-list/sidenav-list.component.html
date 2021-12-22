@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <a mat-list-item [routerLink]="['/movies/search']" (click)="onToggleClose()">
+  <a mat-list-item [routerLink]="['/movies/search']" data-cy="link-peliculas" (click)="onToggleClose()">
     <div class="sidenav-list-link sidenav-list-link--menu">
       <div>
         <span class="js-movies">{{ 'HOME.PELICULAS' | translate }}</span>

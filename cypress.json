@@ -1,0 +1,24 @@
+{
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "configFile": "reporter-config.json"
+  },
+  "viewportWidth": 1500,
+  "viewportHeight": 980,
+  "video": false,
+  "baseUrl": "http://localhost:4200",
+  "env": {
+    "classSnackbar": ".mat-simple-snackbar span",
+    "titleTest": "Texto de prueba",
+    "posterTest": "http://dummyimage.com/400x600.png/cc0000/ffffff",
+    "genreTest": "Horror",
+    "actorsTest": "Isaak McQuode",
+    "studioTest": "Jacobson-Dickinson",
+    "yearTest": "2010",
+    "durationTest": "121",
+    "imdbRatingTest": "5",
+    "esVisible": "be.visible",
+    "textoModificado": "Texto modificado"
+  },
+  "chromeWebSecurity": false
+}

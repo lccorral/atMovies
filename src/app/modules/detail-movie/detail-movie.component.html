@@ -45,11 +45,11 @@
 
     <!-- <div class="row"> -->
       <div class="col-12 pt-3 text-right">
-        <button mat-fab class="btn-add mr-3" color="primary" [routerLink]="'/movies/edit/' + movie.id" attr.aria-label="{{ 'NUEVA_PELICULA.EDITAR' | translate }}">
+        <button mat-fab class="btn-add mr-3" data-cy="editar" color="primary" [routerLink]="'/movies/edit/' + movie.id" attr.aria-label="{{ 'NUEVA_PELICULA.EDITAR' | translate }}">
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-fab class="btn-add btn-add--red" color="primary" (click)="deleteMovie()" attr.aria-label="{{ 'NUEVA_PELICULA.BORRAR' | translate }}">
+        <button mat-fab class="btn-add btn-add--red" data-cy="borrar" color="primary" (click)="deleteMovie()" attr.aria-label="{{ 'NUEVA_PELICULA.BORRAR' | translate }}">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
