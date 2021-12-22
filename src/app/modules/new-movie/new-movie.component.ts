@@ -53,20 +53,18 @@ constructor(
       (respuestaFork: any) => {
         this.allActorsValues = respuestaFork[0].map(item =>
           {
-            const format = {
+            return {
               key:item.id,
               value: item.first_name + ' ' + item.last_name
             };
-            return format;
           });
 
         this.studios = respuestaFork[1].map(item =>
           {
-            const format = {
+            return {
               key:item.id,
               name: item.name
             };
-            return format;
           });
         this.createForm();
       }, error => {
@@ -133,12 +131,11 @@ constructor(
 
   onSubmit(post) {
     this.post = post;
-    console.log(this.post);
 
     if (this.formGroup.valid) {
+      this.isLoadingResults = true;
       this.postMoviesSubscription = this.apiRestService.postMovie$(this.post)
         .subscribe((data: Movie) => {
-          console.log(data);
           this.isLoadingResults = false;
           this.snackBar.open(TRANSLATIONS.HOME.SNACKBAR_OK, TRANSLATIONS.ERROR.CLOSE, {
             duration: 10000,

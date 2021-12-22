@@ -35,7 +35,6 @@ export class MoviesListComponent implements OnInit {
     this.getMoviesSubscription = this.apiRestService.getMovies$()
     .subscribe((data: Movie[]) => {
       this.movies = data;
-      console.log(data);
       this.isLoadingResults = false;
     },
     () => {

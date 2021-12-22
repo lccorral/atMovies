@@ -69,6 +69,8 @@ export class DetailMovieComponent implements OnInit {
                 },
                 () => {
                   this.isLoadingResults = false;
+                  this.actorsFinished = true;
+                  this.compayFinished = true;
                   this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
                     duration: 10000,
                     verticalPosition: 'top'
@@ -81,7 +83,13 @@ export class DetailMovieComponent implements OnInit {
         }, error => {
           console.error(error);
           this.isLoadingResults = false;
-        } );
+          this.actorsFinished = true;
+          this.compayFinished = true;
+          this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
+            duration: 10000,
+            verticalPosition: 'top'
+          });
+        });
     });
   }
 
@@ -96,6 +104,7 @@ export class DetailMovieComponent implements OnInit {
   }
 
   deleteMovie(): void{
+    this.isLoadingResults = true;
     this.getMoviesSubscription = this.apiRestService.deleteMovie$(this.id)
     .subscribe(() => {
       this.isLoadingResults = false;

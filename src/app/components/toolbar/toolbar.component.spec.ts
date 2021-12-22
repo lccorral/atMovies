@@ -67,7 +67,6 @@ describe('ToolbarComponent', () => {
   //   // the DOM should be empty for now since the translations haven't been rendered yet
   //   expect(compiled.querySelector('h1').textContent).toEqual('');
 
-  //   console.log(http);
   //   http.expectOne('/assets/i18n/es.json').flush(TRANSLATIONS_ES);
   //   // http.expectNone('/assets/i18n/fr.json');
 

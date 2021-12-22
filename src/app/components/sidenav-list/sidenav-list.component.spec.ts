@@ -67,7 +67,6 @@ describe('SidenavListComponent', () => {
     // the DOM should be empty for now since the translations haven't been rendered yet
     expect(compiled.querySelector('.js-movies').textContent).toEqual('');
 
-    console.log(http);
     http.expectOne('/assets/i18n/es.json').flush(TRANSLATIONS_ES);
     // http.expectNone('/assets/i18n/fr.json');
 

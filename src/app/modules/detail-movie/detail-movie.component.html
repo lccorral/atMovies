@@ -7,7 +7,7 @@
   <mat-sidenav-content>
     <app-toolbar [title]="'HOME.PELICULAS' | translate" [isMain]="false" (SideNavToggle)="sidenav.toggle()"></app-toolbar>
 
-    <div class="div-card">
+    <div class="div-card" *ngIf="movie">
       <mat-card class="card">
         <mat-card-content>
           <div>
@@ -28,7 +28,7 @@
           <h2>{{ 'NUEVA_PELICULA.ACTORES' | translate }}</h2>
           <mat-divider></mat-divider>
           <p *ngFor="let actor of actors">{{actor.first_name}} {{actor.last_name}}</p>
-
+          <p *ngIf="this.actors?.length === 0">{{ 'ERROR.ERROR' | translate }}</p>
           <h2>{{ 'NUEVA_PELICULA.ESTUDIO' | translate }}</h2>
           <mat-divider></mat-divider>
           <p>{{company?.name}}</p>
@@ -43,17 +43,15 @@
       </mat-card>
     </div>
 
-    <!-- <div class="row"> -->
-      <div class="col-12 pt-3 text-right">
-        <button mat-fab class="btn-add mr-3" data-cy="editar" color="primary" [routerLink]="'/movies/edit/' + movie.id" attr.aria-label="{{ 'NUEVA_PELICULA.EDITAR' | translate }}">
-          <mat-icon>edit</mat-icon>
-        </button>
+    <div *ngIf="movie" class="col-12 pt-3 pb-3 text-right">
+      <button mat-fab class="btn-add mr-3" data-cy="editar" color="primary" [routerLink]="'/movies/edit/' + movie.id" attr.aria-label="{{ 'NUEVA_PELICULA.EDITAR' | translate }}">
+        <mat-icon>edit</mat-icon>
+      </button>
 
-        <button mat-fab class="btn-add btn-add--red" data-cy="borrar" color="primary" (click)="deleteMovie()" attr.aria-label="{{ 'NUEVA_PELICULA.BORRAR' | translate }}">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-    <!-- </div> -->
+      <button mat-fab class="btn-add btn-add--red" data-cy="borrar" color="primary" (click)="deleteMovie()" attr.aria-label="{{ 'NUEVA_PELICULA.BORRAR' | translate }}">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
 
   </mat-sidenav-content>
 </mat-sidenav-container>

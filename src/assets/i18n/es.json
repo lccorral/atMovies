@@ -27,6 +27,7 @@
     "BORRAR": "Borrar película"
   },
   "ERROR": {
+    "ERROR": "Error en el servicio",
     "ERROR_MOVIES": "Error en la petición de películas",
     "CLOSE": "Cerrar"
   },

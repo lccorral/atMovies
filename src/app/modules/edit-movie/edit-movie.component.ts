@@ -164,6 +164,8 @@ constructor(
                 },
                 () => {
                   this.isLoadingResults = false;
+                  this.actorsFinished = true;
+                  this.compayFinished = true;
                   this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
                     duration: 10000,
                     verticalPosition: 'top'
@@ -177,19 +179,23 @@ constructor(
         }, error => {
           console.error(error);
           this.isLoadingResults = false;
-        } );
+          this.actorsFinished = true;
+          this.compayFinished = true;
+          this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
+            duration: 10000,
+            verticalPosition: 'top'
+          });
+        });
     });
   }
 
   onSubmit(post) {
     this.post = post;
-    console.log(this.post);
 
     if (this.formGroup.valid) {
       this.isLoadingResults = true;
       this.postMoviesSubscription = this.apiRestService.putMovie$(this.id, this.post)
         .subscribe((data: Movie) => {
-          console.log(data);
           this.snackBar.open(TRANSLATIONS.HOME.SNACKBAR_OK, TRANSLATIONS.ERROR.CLOSE, {
             duration: 10000,
             verticalPosition: 'top'

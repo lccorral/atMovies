@@ -1,6 +1,6 @@
 <app-toolbar [title]="'NUEVA_PELICULA.EDITAR' | translate" [isMain]="false"></app-toolbar>
 <div class="container" *ngIf="!isLoadingResults && actorsFinished && compayFinished; else whileLoading">
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form d-inline">
+  <form *ngIf="movie && this.actorsLoaded?.length > 0" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form d-inline">
 
     <div class="row">
       <div class="col-12">
@@ -93,7 +93,7 @@
       </div>
     </div>
 
-    <div class="col-12 pt-3 text-right">
+    <div class="col-12 pt-3 pb-3 text-right">
       <button mat-fab class="btn-add" data-cy="actualizar" color="primary" attr.aria-label="{{ 'NUEVA_PELICULA.GUARDAR' | translate }}">
         <mat-icon>save</mat-icon>
       </button>
