@@ -64,8 +64,8 @@ export class ApiRestService {
   }
 
   // PUT
-  public putMovie$(datos: Movie): Observable<Movie> {
-    return this.http.put<Movie>(this.URL + this.SUB_URL_MOVIES, datos);
+  public putMovie$(id: number, datos: Movie): Observable<Movie> {
+    return this.http.put<Movie>(this.URL + this.SUB_URL_MOVIES + '/' + id, datos);
   }
 
   // DELETE

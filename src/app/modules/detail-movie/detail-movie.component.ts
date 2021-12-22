@@ -68,8 +68,11 @@ export class DetailMovieComponent implements OnInit {
                   }
                 },
                 () => {
-                  // this.loading = false;
-                  // this.dataLoaded = false;
+                  this.isLoadingResults = false;
+                  this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
+                    duration: 10000,
+                    verticalPosition: 'top'
+                  });
                 });
             });
           } else {
@@ -103,7 +106,6 @@ export class DetailMovieComponent implements OnInit {
       this.back();
     },
     () => {
-      // this.dataLoaded = false;
       this.isLoadingResults = false;
       this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
         duration: 10000,

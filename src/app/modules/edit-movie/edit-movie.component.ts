@@ -163,8 +163,11 @@ constructor(
                   }
                 },
                 () => {
-                  // this.loading = false;
-                  // this.dataLoaded = false;
+                  this.isLoadingResults = false;
+                  this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
+                    duration: 10000,
+                    verticalPosition: 'top'
+                  });
                 });
             });
           } else {
@@ -184,18 +187,16 @@ constructor(
 
     if (this.formGroup.valid) {
       this.isLoadingResults = true;
-      this.postMoviesSubscription = this.apiRestService.putMovie$(this.post)
+      this.postMoviesSubscription = this.apiRestService.putMovie$(this.id, this.post)
         .subscribe((data: Movie) => {
           console.log(data);
-          this.isLoadingResults = false;
           this.snackBar.open(TRANSLATIONS.HOME.SNACKBAR_OK, TRANSLATIONS.ERROR.CLOSE, {
             duration: 10000,
             verticalPosition: 'top'
           });
-          this.formGroup.reset();
+          this.ngOnInit();
         },
         () => {
-          // this.dataLoaded = false;
           this.isLoadingResults = false;
           this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE, {
             duration: 10000,

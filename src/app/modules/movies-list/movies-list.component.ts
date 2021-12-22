@@ -39,7 +39,6 @@ export class MoviesListComponent implements OnInit {
       this.isLoadingResults = false;
     },
     () => {
-      // this.dataLoaded = false;
       this.isLoadingResults = false;
       this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
         duration: 10000,

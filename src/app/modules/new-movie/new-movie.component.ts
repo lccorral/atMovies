@@ -72,6 +72,10 @@ constructor(
       }, error => {
         console.error(error);
         this.isLoadingResults = false;
+        this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE,  {
+          duration: 10000,
+          verticalPosition: 'top'
+        });
       } );
   }
 
@@ -143,7 +147,6 @@ constructor(
           this.formGroup.reset();
         },
         () => {
-          // this.dataLoaded = false;
           this.isLoadingResults = false;
           this.snackBar.open(TRANSLATIONS.ERROR.ERROR_MOVIES, TRANSLATIONS.ERROR.CLOSE, {
             duration: 10000,

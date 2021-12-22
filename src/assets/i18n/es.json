@@ -22,7 +22,9 @@
     "PUNTUACION": "Puntuación",
     "CAMPO_REQUERIDO": "requerido",
     "CAMPO_REQUERIDA": "requerida",
-    "EDITAR": "Editar película"
+    "EDITAR": "Editar película",
+    "GUARDAR": "Guardar película",
+    "BORRAR": "Borrar película"
   },
   "ERROR": {
     "ERROR_MOVIES": "Error en la petición de películas",
