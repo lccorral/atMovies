@@ -35,7 +35,7 @@ export class ApiRestServiceMock {
     });
   }
 
-  public getMovies(): Observable<Movie> {
+  public getMovie$(): Observable<Movie> {
     return new Observable<Movie>((observer) => {
       observer.next(
         {
@@ -86,7 +86,7 @@ export class ApiRestServiceMock {
     });
   }
 
-  public getActor(): Observable<Actor> {
+  public getActor$(): Observable<Actor> {
     return new Observable<Actor>((observer) => {
       observer.next(
         {
@@ -131,7 +131,7 @@ export class ApiRestServiceMock {
     });
   }
 
-  public getCompany(): Observable<Company> {
+  public getCompany$(): Observable<Company> {
     return new Observable<Company>((observer) => {
       observer.next(
         {

@@ -14,7 +14,9 @@ describe('ApiRestService', () => {
 
   const urlBase = ' http://localhost:3000';
   const environment = {
-    SUB_URL_MOVIES: '/movies'
+    SUB_URL_MOVIES: '/movies',
+    SUB_URL_ACTORS: '/actors',
+    SUB_URL_COMPANIES: '/companies'
   };
   const response: any = {
     movies: [],
@@ -39,11 +41,79 @@ describe('ApiRestService', () => {
 
   it('should getMovies', () => {
     service.getMovies$().subscribe((resp) => {
-      expect(resp).toEqual({ movies: [] });
+      expect(resp).toEqual({ movies: [], actors: [], companies: [] });
     });
 
     const request = httpMock.expectOne(
       urlBase + environment.SUB_URL_MOVIES
+    );
+    request.flush(response);
+
+    httpMock.verify();
+  });
+
+  it('should getMovie', () => {
+    const id = 1;
+    service.getMovie$(id).subscribe((resp) => {
+      expect(resp).toEqual({ movies: [], actors: [], companies: [] });
+    });
+
+    const request = httpMock.expectOne(
+      urlBase + environment.SUB_URL_MOVIES + '/' + id
+    );
+    request.flush(response);
+
+    httpMock.verify();
+  });
+
+  it('should getActors', () => {
+    service.getActors$().subscribe((resp) => {
+      expect(resp).toEqual({ movies: [], actors: [], companies: [] });
+    });
+
+    const request = httpMock.expectOne(
+      urlBase + environment.SUB_URL_ACTORS
+    );
+    request.flush(response);
+
+    httpMock.verify();
+  });
+
+  it('should getActor', () => {
+    const id = 1;
+    service.getActor$(id).subscribe((resp) => {
+      expect(resp).toEqual({ movies: [], actors: [], companies: [] });
+    });
+
+    const request = httpMock.expectOne(
+      urlBase + environment.SUB_URL_ACTORS + '/' + id
+    );
+    request.flush(response);
+
+    httpMock.verify();
+  });
+
+  it('should getCompanies', () => {
+    service.getCompanies$().subscribe((resp) => {
+      expect(resp).toEqual({ movies: [], actors: [], companies: [] });
+    });
+
+    const request = httpMock.expectOne(
+      urlBase + environment.SUB_URL_COMPANIES
+    );
+    request.flush(response);
+
+    httpMock.verify();
+  });
+
+  it('should getCompany', () => {
+    const id = 1;
+    service.getCompany$(id).subscribe((resp) => {
+      expect(resp).toEqual({ movies: [], actors: [], companies: [] });
+    });
+
+    const request = httpMock.expectOne(
+      urlBase + environment.SUB_URL_COMPANIES + '/' + id
     );
     request.flush(response);
 

@@ -31,9 +31,9 @@ export class DetailMovieComponent implements OnInit {
   constructor(
     @Inject(TranslateService) translate: TranslateService,
     @Inject(Location) private location: Location,
-    private readonly apiRestService: ApiRestService,
+    @Inject(ApiRestService) private readonly apiRestService: ApiRestService,
+    @Inject(ActivatedRoute) private readonly rutaActiva: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private readonly rutaActiva: ActivatedRoute
   ) {
     translate.addLangs(['es']);
     translate.setDefaultLang('es');
@@ -41,7 +41,7 @@ export class DetailMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.actors = [];
-    this.rutaActiva?.params.subscribe((param) => {
+    this.rutaActiva.params.subscribe((param) => {
       this.id = parseInt(param.id);
 
       forkJoin([

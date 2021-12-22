@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { forkJoin, Subscription } from 'rxjs';
 import { Actor, Company, Movie } from '../../models/models';
 import { ApiRestService } from '../../services/api-rest.service';
-import { ChipsAutocompleteComponent } from 'src/app/components/chips-autocomplete/chips-autocomplete.component';
+import { ChipsAutocompleteComponent } from '../../components/chips-autocomplete/chips-autocomplete.component';
 import { ActivatedRoute } from '@angular/router';
 
 import * as TRANSLATIONS from '../../../assets/i18n/es.json';
@@ -43,9 +43,9 @@ export class EditMovieComponent implements OnInit, OnDestroy {
 
 constructor(
   @Inject(TranslateService) translate: TranslateService,
-  private readonly apiRestService: ApiRestService,
-  private formBuilder: FormBuilder,
-  private readonly rutaActiva: ActivatedRoute,
+  @Inject(ApiRestService) private apiRestService: ApiRestService,
+  @Inject(FormBuilder) private formBuilder: FormBuilder,
+  @Inject(ActivatedRoute) private readonly rutaActiva: ActivatedRoute,
   private snackBar: MatSnackBar
 ) {
   translate.addLangs(['es']);
@@ -111,7 +111,7 @@ constructor(
   loadForm(): void {
 
     this.actorsLoaded = [];
-    this.rutaActiva?.params.subscribe((param) => {
+    this.rutaActiva.params.subscribe((param) => {
       this.id = parseInt(param.id);
 
       forkJoin([

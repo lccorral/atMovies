@@ -34,8 +34,8 @@ export class NewMovieComponent implements OnInit, OnDestroy {
 
 constructor(
   @Inject(TranslateService) translate: TranslateService,
-  private readonly apiRestService: ApiRestService,
-  private formBuilder: FormBuilder,
+  @Inject(ApiRestService) private apiRestService: ApiRestService,
+  @Inject(FormBuilder) private formBuilder: FormBuilder,
   private snackBar: MatSnackBar
 ) {
   translate.addLangs(['es']);

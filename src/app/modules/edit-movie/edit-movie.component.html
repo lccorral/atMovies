@@ -25,7 +25,7 @@
 
       <!-- Generos -->
       <div class="col-12 col-md-6">
-        <chips-autocomplete data-cy="genre"
+        <chips-autocomplete #chipActors data-cy="genre"
           [label]="'NUEVA_PELICULA.GENEROS' | translate"
           [allElements]="allCategoryValues"
           [showIdChip]="false"
@@ -38,7 +38,7 @@
 
       <!-- Actores -->
       <div class="col-12 col-md-6">
-        <chips-autocomplete data-cy="actors"
+        <chips-autocomplete #chipGenres data-cy="actors"
           [label]="'NUEVA_PELICULA.ACTORES' | translate"
           [allElements]="allActorsValues"
           [showIdChip]="false"
