@@ -122,7 +122,7 @@ constructor(
           this.movie = respuestaFork[0];
           this.company = respuestaFork[1].find(c => {
             this.compayFinished = true;
-            return c.movies.includes(this.id);
+            return c.name.includes(this.movie.studio);
           });
           this.studios = respuestaFork[1].map(item =>
             {
@@ -152,7 +152,7 @@ constructor(
                       poster: this.movie.poster,
                       genre: this.movie.genre,
                       actors: this.actorsLoaded,
-                      studio: this.company.name,
+                      studio: this.company?.name,
                       year: this.movie.year,
                       duration: this.movie.duration,
                       imdbRating: this.movie.imdbRating
